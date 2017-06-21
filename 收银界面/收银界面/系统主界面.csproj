@@ -8,8 +8,8 @@
     <ProjectGuid>{6FBE19B2-2F1A-4861-A02C-9C01999CE2C4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>收银界面</RootNamespace>
-    <AssemblyName>收银界面</AssemblyName>
+    <RootNamespace>系统主界面</RootNamespace>
+    <AssemblyName>系统主界面</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -46,19 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C:\Users\ZA\Desktop\C#\Form1.cs">
-      <SubType>Form</SubType>
-      <Link>Form1.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\ZA\Desktop\C#\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <Link>Form1.Designer.cs</Link>
-    </Compile>
     <Compile Include="DC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DC.Designer.cs">
       <DependentUpon>DC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GL.cs">
       <SubType>Form</SubType>
@@ -80,12 +78,11 @@
     <Compile Include="SY.Designer.cs">
       <DependentUpon>SY.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="C:\Users\ZA\Desktop\C#\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <Link>Form1.resx</Link>
-    </EmbeddedResource>
     <EmbeddedResource Include="DC.resx">
       <DependentUpon>DC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SY.resx">
       <DependentUpon>SY.cs</DependentUpon>

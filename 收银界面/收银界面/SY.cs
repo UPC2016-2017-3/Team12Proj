@@ -189,8 +189,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[0][0].ToString().Trim().Equals("占用"))
             {
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                 + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+            string _sql = "SELECT dbo.xiangxidingdan.商品名称,  dbo.xiangxidingdan.商品数量, "
+                 + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=1 and 是否结账='否'";
 
             SqlConnection conn = new SqlConnection(connStr);
@@ -231,8 +231,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[1][0].ToString().Trim().Equals("占用"))
             {
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                 + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+            string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                 + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=2 and 是否结账='否'";
             string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=2";
             SqlConnection conn = new SqlConnection(connStr);
@@ -265,8 +265,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[2][0].ToString().Trim().Equals("占用"))
             {
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                 + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+            string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                 + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=3 and 是否结账='否'";
             string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=3";
             SqlConnection conn = new SqlConnection(connStr);
@@ -305,8 +305,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                 + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+            string _sql = "SELECT dbo.xiangxidingdan.商品名称, dbo.xiangxidingdan.商品数量, "
+                 + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=4 and 是否结账='否'";
             string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=4";
             SqlConnection conn = new SqlConnection(connStr);
@@ -338,8 +338,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称, dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=5 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=5";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -372,8 +372,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=6 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=6";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -405,8 +405,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称,  dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=7 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=7";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -438,8 +438,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=8 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=8";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -472,8 +472,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=9 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=9";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -506,8 +506,8 @@ namespace 收银界面
             if (dss.Tables[0].Rows[3][0].ToString().Trim().Equals("占用"))
             {
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=10 and 是否结账='否'";
                 string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=10";
                 SqlConnection conn = new SqlConnection(connStr);
@@ -545,8 +545,8 @@ namespace 收银界面
         private void button9_Click(object sender, EventArgs e)
         {
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sql = "SELECT dbo.xiangxidingdan.菜品名称, dbo.xiangxidingdan.菜品分类, dbo.xiangxidingdan.菜品数量, "
-                     + "  dbo.xiangxidingdan.单价," + "dbo.xiangxidingdan.菜品数量*dbo.xiangxidingdan.单价 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+            string _sql = "SELECT dbo.xiangxidingdan.商品名称, dbo.xiangxidingdan.商品数量, "
+                     + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   是否结账='是'";
             SqlConnection conn = new SqlConnection(connStr);
             SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);

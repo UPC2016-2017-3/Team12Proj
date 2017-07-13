@@ -127,7 +127,7 @@ namespace 收银界面
             {
                 string strSelID = comboBox1.Items[comboBox1.SelectedIndex].ToString().Trim();
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "select 菜品名称 as '菜品名称',单价 as '菜品单价',菜品数量 as '菜品数量', 菜品数量*单价 as '小计'from xiangxidingdan where 桌号='" + strSelID + "'";
+                string _sql = "select 商品名称 as '菜品名称',商品价格 as '单价',商品数量 as '菜品数量', 商品数量*商品价格 as '小计'from xiangxidingdan where 桌号='" + strSelID + "'";
                 string _ssql = "select 订单编号 as '订单编号',人数 as '人数',总价 as '消费总额'from dingdan where 桌号='" + strSelID + "'";
                 string _sssql = "select count(*) as 'length' from xiangxidingdan where 桌号='" + strSelID + "'";
                 SqlConnection conn = new SqlConnection(connStr);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "系统主界面", "收银界面\系统主界面.csproj", "{6FBE19B2-2F1A-4861-A02C-9C01999CE2C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "收银界面", "收银界面\收银界面.csproj", "{6FBE19B2-2F1A-4861-A02C-9C01999CE2C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

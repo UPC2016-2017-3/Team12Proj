@@ -198,17 +198,22 @@ namespace 收银界面
             DataSet ds = new DataSet();
 
             sda.Fill(ds);
-  
+
             dataGridView1.DataSource = ds.Tables[0].DefaultView;
 
-            string _ssql = "select 订单编号 as '订单编号',人数 as '人数',总价 as '总价'from dingdan where 是否结账='否'and 桌号=1";
+            string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                 + " where   桌号=1 and 是否结账='否'";
+            string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=1 and 是否结账='否'";
             SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+            SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
             DataSet dr = new DataSet();
-            sdb.Fill(dr);    
+            DataSet dt = new DataSet();
+            sdb.Fill(dr);
+            sdc.Fill(dt);
             label3.Text = "1".ToString();
-            label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-            label9.Text = dr.Tables[0].Rows[0][0].ToString();
-            label11.Text =dr.Tables[0].Rows[0][1].ToString();
+            label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+            label9.Text = dt.Tables[0].Rows[0][0].ToString();
+            label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -234,19 +239,28 @@ namespace 收银界面
             string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                  + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=2 and 是否结账='否'";
-            string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=2";
+
             SqlConnection conn = new SqlConnection(connStr);
             SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
             DataSet ds = new DataSet();
-            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-            DataSet dr = new DataSet();
+
             sda.Fill(ds);
-            sdb.Fill(dr);
+
             dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+            string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                 + " where   桌号=2 and 是否结账='否'";
+            string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=2 and 是否结账='否'";
+            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+            SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+            DataSet dr = new DataSet();
+            DataSet dt = new DataSet();
+            sdb.Fill(dr);
+            sdc.Fill(dt);
             label3.Text = "2".ToString();
-            label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-            label9.Text = dr.Tables[0].Rows[0][0].ToString();
-            label11.Text = dr.Tables[0].Rows[0][1].ToString();
+            label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+            label9.Text = dt.Tables[0].Rows[0][0].ToString();
+            label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -268,19 +282,27 @@ namespace 收银界面
             string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                  + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=3 and 是否结账='否'";
-            string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=3";
             SqlConnection conn = new SqlConnection(connStr);
             SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
             DataSet ds = new DataSet();
-            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-            DataSet dr = new DataSet();
+
             sda.Fill(ds);
-            sdb.Fill(dr);
+
             dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+            string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                 + " where   桌号=3 and 是否结账='否'";
+            string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=3 and 是否结账='否'";
+            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+            SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+            DataSet dr = new DataSet();
+            DataSet dt = new DataSet();
+            sdb.Fill(dr);
+            sdc.Fill(dt);
             label3.Text = "3".ToString();
-            label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-            label9.Text = dr.Tables[0].Rows[0][0].ToString();
-            label11.Text = dr.Tables[0].Rows[0][1].ToString();
+            label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+            label9.Text = dt.Tables[0].Rows[0][0].ToString();
+            label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -308,19 +330,27 @@ namespace 收银界面
             string _sql = "SELECT dbo.xiangxidingdan.商品名称, dbo.xiangxidingdan.商品数量, "
                  + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                  + " where   桌号=4 and 是否结账='否'";
-            string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=4";
             SqlConnection conn = new SqlConnection(connStr);
             SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
             DataSet ds = new DataSet();
-            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-            DataSet dr = new DataSet();
+
             sda.Fill(ds);
-            sdb.Fill(dr);
+
             dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+            string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                 + " where   桌号=4 and 是否结账='否'";
+            string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=4 and 是否结账='否'";
+            SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+            SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+            DataSet dr = new DataSet();
+            DataSet dt = new DataSet();
+            sdb.Fill(dr);
+            sdc.Fill(dt);
             label3.Text = "4".ToString();
-            label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-            label9.Text = dr.Tables[0].Rows[0][0].ToString();
-            label11.Text = dr.Tables[0].Rows[0][1].ToString();
+            label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+            label9.Text = dt.Tables[0].Rows[0][0].ToString();
+            label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -341,19 +371,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称, dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=5 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=5";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=5 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=5 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
                 label3.Text = "5".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -375,19 +413,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=6 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=6";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=6 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=6 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
                 label3.Text = "6".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -408,19 +454,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称,  dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=7 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=7";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=7 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=7 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
                 label3.Text = "7".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -441,19 +495,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=8 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=8";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
-                label3.Text = "8".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=8 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=8 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
+                label3.Text = "1".ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -475,19 +537,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=9 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=9";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
-                label3.Text = "9".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=9 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=9 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
+                label3.Text = "1".ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -509,19 +579,27 @@ namespace 收银界面
                 string _sql = "SELECT dbo.xiangxidingdan.商品名称,dbo.xiangxidingdan.商品数量, "
                      + "  dbo.xiangxidingdan.商品价格," + "dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格 as '小计' FROM      dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
                      + " where   桌号=10 and 是否结账='否'";
-                string _ssql = "select 订单编号 as 'ddbh',人数 as 'renshu',总价 as 'zongjia'from dingdan where 是否结账='否'and 桌号=10";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
-                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
-                DataSet dr = new DataSet();
+
                 sda.Fill(ds);
-                sdb.Fill(dr);
+
                 dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+                string _ssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                     + " where   桌号=10 and 是否结账='否'";
+                string _ssqll = "select   订单编号 as '订单编号',人数 as '人数' from dingdan  where   桌号=10 and 是否结账='否'";
+                SqlDataAdapter sdb = new SqlDataAdapter(_ssql, conn);
+                SqlDataAdapter sdc = new SqlDataAdapter(_ssqll, conn);
+                DataSet dr = new DataSet();
+                DataSet dt = new DataSet();
+                sdb.Fill(dr);
+                sdc.Fill(dt);
                 label3.Text = "10".ToString();
-                label7.Text = '￥' + dr.Tables[0].Rows[0][2].ToString();
-                label9.Text = dr.Tables[0].Rows[0][0].ToString();
-                label11.Text = dr.Tables[0].Rows[0][1].ToString();
+                label7.Text = '￥' + dr.Tables[0].Rows[0][0].ToString();
+                label9.Text = dt.Tables[0].Rows[0][0].ToString();
+                label11.Text = dt.Tables[0].Rows[0][1].ToString();
             }
             else
             {

@@ -65,21 +65,21 @@ namespace 收银界面
                 {
                     this.Hide();
                     id = this.textBox1.Text;
-                    DC NewFrm = new DC();
+                    cp NewFrm = new cp();
                     NewFrm.Show();
                 }
                 if (this.comboBox1.Text.Equals("管理员"))
                 {
                     this.Hide();
                     id = this.textBox1.Text;
-                    GL NewFrm = new GL();
+                    parentForm  NewFrm = new parentForm();
                     NewFrm.Show();
                 }
                 if (this.comboBox1.Text.Equals("后厨"))
                 {
                     this.Hide();
                     id = this.textBox1.Text;
-                    HC NewFrm = new HC();
+                    DDXQ NewFrm = new DDXQ();
                     NewFrm.Show();
                 }
             }

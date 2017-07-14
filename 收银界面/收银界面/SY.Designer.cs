@@ -569,9 +569,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox chaxunBox1;
-       // private 系统主界面.ADataSet aDataSet;
         private System.Windows.Forms.BindingSource dingdanBindingSource;
-        // private 系统主界面.ADataSetTableAdapters.dingdanTableAdapter dingdanTableAdapter;
         private System.Windows.Forms.GroupBox zhuBox1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;

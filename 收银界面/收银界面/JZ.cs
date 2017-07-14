@@ -78,12 +78,14 @@ namespace 收银界面
             string strSelID = comboBox1.Items[comboBox1.SelectedIndex].ToString().Trim();
 
             string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-            string _sssql = "select 桌号 as '桌号',总价 as '总价'from dingdan where 桌号='" + strSelID + "'";;
+            //string _sssql = "select 桌号 as '桌号',总价 as '总价'from dingdan where 桌号='" + strSelID + "'";
+            string _sssql = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+                    + " where   桌号='" + strSelID + "' and 是否结账='否'";
             SqlConnection conn = new SqlConnection(connStr);
             SqlDataAdapter sda = new SqlDataAdapter(_sssql, conn);
             DataSet ds = new DataSet();
             sda.Fill(ds);
-            label7.Text = '￥' + ds.Tables[0].Rows[0][1].ToString();
+            label7.Text = '￥' + ds.Tables[0].Rows[0][0].ToString();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -127,9 +129,12 @@ namespace 收银界面
             {
                 string strSelID = comboBox1.Items[comboBox1.SelectedIndex].ToString().Trim();
                 string connStr = "Data Source=WHM;Initial Catalog=A;Integrated Security=True";
-                string _sql = "select 商品名称 as '菜品名称',商品价格 as '单价',商品数量 as '菜品数量', 商品数量*商品价格 as '小计'from xiangxidingdan where 桌号='" + strSelID + "'";
-                string _ssql = "select 订单编号 as '订单编号',人数 as '人数',总价 as '消费总额'from dingdan where 桌号='" + strSelID + "'";
-                string _sssql = "select count(*) as 'length' from xiangxidingdan where 桌号='" + strSelID + "'";
+                string _sql = "select dbo.xiangxidingdan.商品名称 as '菜品名称',dbo.xiangxidingdan.商品价格 as '单价',dbo.xiangxidingdan.商品数量 as '菜品数量', (dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) as '小计' FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+        + " where   桌号='" + strSelID + "' and 是否结账='否'"; ;
+                string _ssql = "select 订单编号 as '订单编号',人数 as '人数' from dingdan where 桌号='" + strSelID + "'";
+                string _ssqll = "select sum(dbo.xiangxidingdan.商品数量*dbo.xiangxidingdan.商品价格) FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号"
+        + " where   桌号='" + strSelID + "' and 是否结账='否'";
+                string _sssql = "select count(*) as 'length' FROM dbo.dingdan RIGHT OUTER JOIN dbo.xiangxidingdan ON dbo.dingdan.订单编号 = dbo.xiangxidingdan.订单编号 where 桌号='" + strSelID + "'and 是否结账='否'";
                 SqlConnection conn = new SqlConnection(connStr);
                 SqlDataAdapter sda = new SqlDataAdapter(_sql, conn);
                 DataSet ds = new DataSet();
@@ -137,10 +142,13 @@ namespace 收银界面
                 DataSet dr = new DataSet();
                 SqlDataAdapter sdc = new SqlDataAdapter(_sssql, conn);
                 DataSet dt = new DataSet();
+                SqlDataAdapter sdd = new SqlDataAdapter(_ssqll, conn);
+                DataSet du = new DataSet();
 
                 sda.Fill(ds);
                 sdb.Fill(dr);
                 sdc.Fill(dt);
+                sdd.Fill(du);
                 int m = Convert.ToInt32(dt.Tables[0].Rows[0][0].ToString());
 
                 int speed = 20;
@@ -179,7 +187,7 @@ namespace 收银界面
                 g.DrawString(dr.Tables[0].Rows[0][1].ToString(), new Font("宋体", 20), redPen, new Point(600, 80));
                 // g.DrawLine(tablePan, new Point(600, 100), new Point(700, 100)); 
                 g.DrawString("消费总额：", itemFont, blackPen, new Point(500, 140));
-                g.DrawString(dr.Tables[0].Rows[0][2].ToString(), new Font("宋体", 20), redPen, new Point(600, 140));
+                g.DrawString(du.Tables[0].Rows[0][0].ToString(), new Font("宋体", 20), redPen, new Point(600, 140));
                 // g.DrawLine(tablePan, new Point(600, 160), new Point(700, 160)); 
                 //上分隔线 
                 g.DrawLine(tablePan, new Point(30, 200), new Point(e.PageBounds.Width - 30, 200));
@@ -195,7 +203,7 @@ namespace 收银界面
                 g.DrawLine(tablePan, new Point(30, e.PageBounds.Height - 260), new Point(e.PageBounds.Width - 30, e.PageBounds.Height - 260));
                 //联系地址及总计
                 g.DrawString(System.DateTime.Now.ToString(), new Font("宋体", 15), blackPen, new Point(e.PageBounds.Width - 250, e.PageBounds.Height - 270));
-                g.DrawString("总计：￥" + dr.Tables[0].Rows[0][2].ToString(), new Font("宋体", 20), redPen, new Point(e.PageBounds.Width - 250, e.PageBounds.Height - 240));
+                g.DrawString("总计：￥" + du.Tables[0].Rows[0][0].ToString(), new Font("宋体", 20), redPen, new Point(e.PageBounds.Width - 250, e.PageBounds.Height - 240));
                 g.DrawString("实付：￥" + textBox3.Text.ToString(), new Font("宋体", 20), redPen, new Point(e.PageBounds.Width - 250, e.PageBounds.Height - 190));
                 g.DrawString("找零：" + label8.Text.ToString(), new Font("宋体", 20), redPen, new Point(e.PageBounds.Width - 250, e.PageBounds.Height - 140));
                 g.DrawString("地址：山东省青岛市黄岛区长江西路66号", new Font("宋体", 15), blackPen, new Point(100, e.PageBounds.Height - 85));

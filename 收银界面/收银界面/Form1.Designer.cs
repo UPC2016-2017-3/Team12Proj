@@ -104,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(354, 37);
+            this.label3.Location = new System.Drawing.Point(354, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(260, 29);
             this.label3.TabIndex = 6;
@@ -142,6 +142,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(738, 419);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
@@ -152,7 +153,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "系统主界面";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
